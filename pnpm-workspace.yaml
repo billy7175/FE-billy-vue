@@ -1,0 +1,6 @@
+# pnpm workspace 설정
+# - packages 폴더 아래의 모든 패키지를 워크스페이스로 관리
+# - 이를 통해 로컬 패키지 간 의존성을 자동으로 연결
+packages:
+  - "packages/*"
+

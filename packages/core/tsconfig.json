@@ -1,0 +1,17 @@
+{
+  // core 패키지용 TypeScript 설정
+  // - 루트 tsconfig를 확장
+  // - 타입 선언 파일(.d.ts) 생성 설정 포함
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "lib": ["ESNext", "DOM"],
+    "jsx": "preserve"
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist"]
+}
+

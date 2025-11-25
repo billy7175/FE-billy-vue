@@ -1,0 +1,21 @@
+{
+  "name": "playground",
+  "private": true,
+  "version": "0.0.0",
+  "description": "컴포넌트를 눈으로 보며 개발하는 Vite 기반 Vue 앱 (로컬 개발용)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "@my-ui/core": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "@vitejs/plugin-vue": "^5.0.0"
+  }
+}
+

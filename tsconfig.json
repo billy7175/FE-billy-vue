@@ -1,0 +1,22 @@
+{
+  // 루트 TypeScript 설정
+  // - monorepo 전체에서 공유하는 기본 설정
+  // - 각 패키지는 이 설정을 extends하여 사용
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ES2020",
+    "baseUrl": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    // 경로 별칭 설정 - IDE에서 @my-ui/core 등을 인식하게 함
+    "paths": {
+      "@my-ui/*": ["packages/*/src"]
+    }
+  },
+  "references": []
+}
+

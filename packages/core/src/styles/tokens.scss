@@ -1,0 +1,69 @@
+/**
+ * 디자인 토큰 (CSS 변수)
+ * 
+ * 왜 CSS 변수를 사용하나?
+ * - 런타임에서 테마를 동적으로 변경 가능 (다크모드 등)
+ * - JavaScript 없이도 CSS만으로 테마 전환 가능
+ * - 컴포넌트 간 일관된 스타일 유지
+ * 
+ * 사용법:
+ * - 라이트 테마: 기본값 (:root에 정의)
+ * - 다크 테마: html 또는 body에 data-theme="dark" 추가
+ */
+
+:root {
+  // 색상 토큰
+  --myui-primary: #1867ff;
+  --myui-primary-hover: #0d5bef;
+  --myui-primary-active: #0a4fd6;
+  
+  --myui-secondary: #6c757d;
+  --myui-secondary-hover: #5c636a;
+  
+  --myui-success: #28a745;
+  --myui-warning: #ffc107;
+  --myui-danger: #dc3545;
+  
+  // 텍스트 색상
+  --myui-text: #222222;
+  --myui-text-muted: #6c757d;
+  --myui-text-inverse: #ffffff;
+  
+  // 배경색
+  --myui-bg: #ffffff;
+  --myui-bg-secondary: #f8f9fa;
+  
+  // 테두리
+  --myui-border: rgba(0, 0, 0, 0.12);
+  --myui-border-radius: 6px;
+  
+  // 그림자
+  --myui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --myui-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --myui-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  // 트랜지션
+  --myui-transition-fast: 150ms ease;
+  --myui-transition-normal: 250ms ease;
+}
+
+// 다크 테마
+[data-theme="dark"] {
+  --myui-primary: #4ea1ff;
+  --myui-primary-hover: #6bb3ff;
+  --myui-primary-active: #3d8fe6;
+  
+  --myui-text: #ffffff;
+  --myui-text-muted: #a0aec0;
+  --myui-text-inverse: #222222;
+  
+  --myui-bg: #0b1220;
+  --myui-bg-secondary: #1a2332;
+  
+  --myui-border: rgba(255, 255, 255, 0.12);
+  
+  --myui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --myui-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --myui-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+

@@ -1,0 +1,25 @@
+{
+  "name": "my-ui-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "실무형 Vue 컴포넌트 라이브러리 monorepo 템플릿",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "build": "pnpm -r run build",
+    "dev:playground": "pnpm --filter playground dev",
+    "dev:storybook": "pnpm --filter storybook storybook",
+    "new:component": "node ./scripts/create-component.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
+
