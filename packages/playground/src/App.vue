@@ -53,6 +53,55 @@
         </div>
       </section>
 
+      <!-- Input 컴포넌트 테스트 섹션 -->
+      <section class="section">
+        <h2>Input 컴포넌트</h2>
+        
+        <div class="demo-group">
+          <h3>기본 Input</h3>
+          <div class="demo-row">
+            <UiInput v-model="inputValue" placeholder="입력하세요" />
+          </div>
+          <p style="margin-top: 8px; color: var(--myui-text-muted, #6c757d);">
+            입력값: {{ inputValue }}
+          </p>
+        </div>
+
+        <div class="demo-group">
+          <h3>Sizes (크기)</h3>
+          <div class="demo-row" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+            <UiInput size="sm" placeholder="Small input" />
+            <UiInput size="md" placeholder="Medium input" />
+            <UiInput size="lg" placeholder="Large input" />
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>Types (타입)</h3>
+          <div class="demo-row" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+            <UiInput type="text" placeholder="Text input" />
+            <UiInput type="email" placeholder="Email input" />
+            <UiInput type="password" placeholder="Password input" />
+            <UiInput type="number" placeholder="Number input" />
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>States (상태)</h3>
+          <div class="demo-row" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+            <UiInput placeholder="Normal input" />
+            <UiInput disabled placeholder="Disabled input" />
+            <UiInput readonly placeholder="Readonly input" value="읽기 전용" />
+            <UiInput error placeholder="Error input" />
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>Block (전체 너비)</h3>
+          <UiInput block placeholder="Full width input" />
+        </div>
+      </section>
+
       <!-- 추가 컴포넌트들은 여기에 섹션 추가 -->
     </main>
 
@@ -70,6 +119,9 @@ const isDark = ref(false)
 
 // 로딩 상태 데모
 const isLoading = ref(false)
+
+// Input 값
+const inputValue = ref('')
 
 /**
  * 테마 전환 함수

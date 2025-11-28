@@ -14,6 +14,9 @@
 export { Button } from './components/Button'
 export type { ButtonProps } from './components/Button/types'
 
+export { Input } from './components/Input'
+export type { InputProps } from './components/Input/types'
+
 // ===== 전역 등록 플러그인 =====
 export { default as MyUIPlugin } from './plugin'
 
