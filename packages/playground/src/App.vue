@@ -3,6 +3,7 @@
     Playground 메인 앱
     - 컴포넌트들을 실제 환경에서 테스트
     - 다크모드 전환 기능 포함
+    - Sidebar에서 컴포넌트 선택
   -->
   <div class="playground">
     <header class="playground__header">
@@ -12,9 +13,29 @@
       </button>
     </header>
 
-    <main class="playground__content">
+    <div class="playground__body">
+      <!-- Sidebar -->
+      <aside class="playground__sidebar">
+        <nav class="sidebar__nav">
+          <h3 class="sidebar__title">Components</h3>
+          <ul class="sidebar__list">
+            <li
+              v-for="component in components"
+              :key="component.id"
+              class="sidebar__item"
+              :class="{ 'sidebar__item--active': selectedComponent === component.id }"
+              @click="selectedComponent = component.id"
+            >
+              {{ component.name }}
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="playground__content">
       <!-- Button 컴포넌트 테스트 섹션 -->
-      <section class="section">
+      <section v-if="selectedComponent === 'button'" class="section">
         <h2>Button 컴포넌트</h2>
         
         <div class="demo-group">
@@ -54,7 +75,7 @@
       </section>
 
       <!-- Input 컴포넌트 테스트 섹션 -->
-      <section class="section">
+      <section v-if="selectedComponent === 'input'" class="section">
         <h2>Input 컴포넌트</h2>
         
         <div class="demo-group">
@@ -103,7 +124,8 @@
       </section>
 
       <!-- 추가 컴포넌트들은 여기에 섹션 추가 -->
-    </main>
+      </main>
+    </div>
 
     <footer class="playground__footer">
       <p>@my-ui/core 컴포넌트 라이브러리 개발용 Playground</p>
@@ -122,6 +144,15 @@ const isLoading = ref(false)
 
 // Input 값
 const inputValue = ref('')
+
+// 선택된 컴포넌트
+const selectedComponent = ref('button')
+
+// 컴포넌트 목록
+const components = [
+  { id: 'button', name: 'Button' },
+  { id: 'input', name: 'Input' }
+]
 
 /**
  * 테마 전환 함수
@@ -192,9 +223,67 @@ onMounted(() => {
   border-color: var(--myui-primary, #1867ff);
 }
 
+.playground__body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.playground__sidebar {
+  width: 250px;
+  border-right: 1px solid var(--myui-border, rgba(0,0,0,0.12));
+  background: var(--myui-bg-secondary, #f8f9fa);
+  overflow-y: auto;
+}
+
+.sidebar__nav {
+  padding: 20px;
+}
+
+.sidebar__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--myui-text-muted, #6c757d);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.sidebar__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__item {
+  padding: 12px 16px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--myui-text, #222);
+  font-size: 14px;
+}
+
+.sidebar__item:hover:not(.sidebar__item--active) {
+  background: var(--myui-bg, #fff);
+}
+
+.sidebar__item--active {
+  background: var(--myui-primary, #1867ff);
+  color: var(--myui-text-inverse, #fff);
+  font-weight: 500;
+}
+
+.sidebar__item--active:hover {
+  background: var(--myui-primary, #1867ff);
+  color: var(--myui-text-inverse, #fff);
+}
+
 .playground__content {
   flex: 1;
   padding: 40px;
+  overflow-y: auto;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
