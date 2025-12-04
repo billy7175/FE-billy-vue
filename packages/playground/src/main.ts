@@ -13,10 +13,10 @@ import App from './App.vue'
 // import { Button } from '@my-ui/core'
 
 // 방법 2: 전역 플러그인 사용 (모든 컴포넌트 전역 등록)
-import { MyUIPlugin } from '@my-ui/core'
+import { MyUIPlugin } from '@billy7175/my-ui-core'
 
 // 스타일 import (필수!)
-import '@my-ui/core/styles.css'
+import '@billy7175/my-ui-core/styles.css'
 
 const app = createApp(App)
 

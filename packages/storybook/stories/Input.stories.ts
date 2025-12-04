@@ -3,7 +3,7 @@
  */
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
-import { Input } from '@my-ui/core'
+import { Input } from '@billy7175/my-ui-core'
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',

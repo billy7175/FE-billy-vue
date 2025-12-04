@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "vue": "^3.4.0",
-    "@my-ui/core": "workspace:*"
+    "@billy7175/my-ui-core": "workspace:*"
   },
   "devDependencies": {
     "vite": "^5.0.0",

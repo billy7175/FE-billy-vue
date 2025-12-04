@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "vue": "^3.4.0",
-    "@my-ui/core": "workspace:*"
+    "@billy7175/my-ui-core": "workspace:*"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.0.0",

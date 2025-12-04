@@ -11,7 +11,7 @@
  * - 자동 문서 생성
  */
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { Button } from '@my-ui/core'
+import { Button } from '@billy7175/my-ui-core'
 
 // 메타 정보 - 컴포넌트에 대한 기본 설정
 const meta: Meta<typeof Button> = {

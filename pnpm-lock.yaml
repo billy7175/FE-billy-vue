@@ -38,7 +38,7 @@ importers:
 
   packages/playground:
     dependencies:
-      '@my-ui/core':
+      '@billy7175/my-ui-core':
         specifier: workspace:*
         version: link:../core
       vue:
@@ -54,7 +54,7 @@ importers:
 
   packages/storybook:
     dependencies:
-      '@my-ui/core':
+      '@billy7175/my-ui-core':
         specifier: workspace:*
         version: link:../core
       vue:
