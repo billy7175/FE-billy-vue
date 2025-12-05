@@ -9,7 +9,6 @@
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
@@ -29,8 +28,8 @@ export default defineConfig({
     // 라이브러리 모드
     lib: {
       entry: {
-        index: resolve(__dirname, 'src/index.ts'),
-        plugin: resolve(__dirname, 'src/plugin.ts')
+        index: './src/index.ts',
+        plugin: './src/plugin.ts'
       },
       formats: ['es', 'cjs'],
       fileName: (format, entryName) => {
