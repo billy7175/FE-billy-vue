@@ -23,13 +23,15 @@ import type { App, Plugin } from 'vue'
 // 모든 컴포넌트 import
 import { Button } from './components/Button'
 import { Input } from './components/Input'
+import { Tab } from './components/Tab'
 
 // 컴포넌트 레지스트리
 // - 이름: 전역 등록될 컴포넌트 이름
 // - 값: 컴포넌트 객체
 const components: Record<string, any> = {
   Button,
-  Input
+  Input,
+  Tab
 }
 
 /**

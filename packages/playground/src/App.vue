@@ -123,6 +123,87 @@
         </div>
       </section>
 
+      <!-- Tab 컴포넌트 테스트 섹션 -->
+      <section v-if="selectedComponent === 'tab'" class="section">
+        <h2>Tab 컴포넌트</h2>
+        
+        <div class="demo-group">
+          <h3>기본 Tab</h3>
+          <UiTab v-model="activeTab" :tabs="tabTabs">
+            <template #tab-tab1>
+              <div style="padding: 20px; background: var(--myui-bg-secondary, #f8f9fa); border-radius: 6px;">
+                <h4>탭 1 콘텐츠</h4>
+                <p>첫 번째 탭의 내용입니다.</p>
+              </div>
+            </template>
+            <template #tab-tab2>
+              <div style="padding: 20px; background: var(--myui-bg-secondary, #f8f9fa); border-radius: 6px;">
+                <h4>탭 2 콘텐츠</h4>
+                <p>두 번째 탭의 내용입니다.</p>
+              </div>
+            </template>
+            <template #tab-tab3>
+              <div style="padding: 20px; background: var(--myui-bg-secondary, #f8f9fa); border-radius: 6px;">
+                <h4>탭 3 콘텐츠</h4>
+                <p>세 번째 탭의 내용입니다.</p>
+              </div>
+            </template>
+          </UiTab>
+          <p style="margin-top: 12px; color: var(--myui-text-muted, #6c757d);">
+            현재 활성 탭: {{ activeTab }}
+          </p>
+        </div>
+
+        <div class="demo-group">
+          <h3>Variants (스타일 변형)</h3>
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px;">Default</h4>
+            <UiTab v-model="activeTab" :tabs="tabTabs" variant="default" />
+          </div>
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px;">Pills</h4>
+            <UiTab v-model="activeTab" :tabs="tabTabs" variant="pills" />
+          </div>
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px;">Underline</h4>
+            <UiTab v-model="activeTab" :tabs="tabTabs" variant="underline" />
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>Sizes (크기)</h3>
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px;">Small</h4>
+            <UiTab v-model="activeTab" :tabs="tabTabs" size="sm" />
+          </div>
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px;">Medium</h4>
+            <UiTab v-model="activeTab" :tabs="tabTabs" size="md" />
+          </div>
+          <div style="margin-bottom: 24px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px;">Large</h4>
+            <UiTab v-model="activeTab" :tabs="tabTabs" size="lg" />
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>Block (전체 너비)</h3>
+          <UiTab v-model="activeTab" :tabs="tabTabs" block />
+        </div>
+
+        <div class="demo-group">
+          <h3>Disabled (비활성화)</h3>
+          <UiTab 
+            v-model="activeTab" 
+            :tabs="[
+              { value: 'tab1', label: '탭 1' },
+              { value: 'tab2', label: '탭 2', disabled: true },
+              { value: 'tab3', label: '탭 3' }
+            ]" 
+          />
+        </div>
+      </section>
+
       <!-- 추가 컴포넌트들은 여기에 섹션 추가 -->
       </main>
     </div>
@@ -145,13 +226,22 @@ const isLoading = ref(false)
 // Input 값
 const inputValue = ref('')
 
+// Tab 값
+const activeTab = ref('tab1')
+const tabTabs = [
+  { value: 'tab1', label: '탭 1' },
+  { value: 'tab2', label: '탭 2' },
+  { value: 'tab3', label: '탭 3' }
+]
+
 // 선택된 컴포넌트
 const selectedComponent = ref('button')
 
 // 컴포넌트 목록
 const components = [
   { id: 'button', name: 'Button' },
-  { id: 'input', name: 'Input' }
+  { id: 'input', name: 'Input' },
+  { id: 'tab', name: 'Tab' }
 ]
 
 /**

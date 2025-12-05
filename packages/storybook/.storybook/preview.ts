@@ -9,7 +9,7 @@
 import type { Preview } from '@storybook/vue3'
 
 // core 패키지의 스타일 import (필수!)
-import '@my-ui/core/styles.css'
+import '@billy7175/my-ui-core/styles.css'
 
 const preview: Preview = {
   parameters: {

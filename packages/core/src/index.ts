@@ -17,6 +17,9 @@ export type { ButtonProps } from './components/Button/types'
 export { Input } from './components/Input'
 export type { InputProps } from './components/Input/types'
 
+export { Tab } from './components/Tab'
+export type { TabProps, TabItem } from './components/Tab/types'
+
 // ===== 전역 등록 플러그인 =====
 export { default as MyUIPlugin } from './plugin'
 
