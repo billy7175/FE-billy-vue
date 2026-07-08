@@ -6,6 +6,8 @@
     - 읽기 전용 코드 뷰어 (편집 불가)
     - Shiki 기반 신택스 하이라이팅 (동적 import로 번들 분리)
     - Shiki 로딩 실패/로딩 중에는 일반 텍스트로 폴백 → 콘텐츠가 먼저 보임
+    - 테마: 다른 컴포넌트와 동일하게 --myui-* 토큰 + [data-theme="dark"] 오버라이드.
+      코드 색상은 Shiki 듀얼 테마 출력(--shiki-dark 변수)을 CSS로 전환
   -->
   <div class="myui-code-viewer">
     <div v-if="filename" class="myui-code-viewer__header">
@@ -37,7 +39,8 @@ import type { CodeViewerProps } from './types'
 const props = withDefaults(defineProps<CodeViewerProps>(), {
   lang: '',
   filename: '',
-  theme: 'github-dark'
+  lightTheme: 'github-light',
+  darkTheme: 'github-dark'
 })
 
 const highlightedHtml = ref('')
@@ -99,9 +102,15 @@ async function highlight() {
   if (!shiki || currentRequest !== requestId) return
 
   try {
+    // 듀얼 테마 출력: 라이트 색은 인라인, 다크 색은 --shiki-dark 변수로 포함됨
+    // → [data-theme="dark"]에서 CSS만으로 전환 (재하이라이팅 불필요)
     const html = await shiki.codeToHtml(props.code, {
       lang: resolvedLang.value,
-      theme: props.theme
+      themes: {
+        light: props.lightTheme,
+        dark: props.darkTheme
+      },
+      defaultColor: 'light'
     })
     if (currentRequest === requestId) {
       highlightedHtml.value = html
@@ -115,7 +124,7 @@ async function highlight() {
 }
 
 watch(
-  () => [props.code, resolvedLang.value, props.theme],
+  () => [props.code, resolvedLang.value, props.lightTheme, props.darkTheme],
   () => highlight(),
   { immediate: true }
 )
@@ -125,8 +134,8 @@ watch(
 /**
  * CodeViewer 스타일
  *
- * 코드 영역은 Nuxt 홈페이지처럼 항상 어두운 배경을 기본으로 하되,
- * CSS 변수로 오버라이드 가능하게 설계
+ * 테마 토큰(--myui-code-*)은 tokens.scss에서 라이트 기본값 +
+ * [data-theme="dark"] 오버라이드로 정의됨 (다른 컴포넌트와 동일한 방식)
  */
 @import '../../styles/tokens.scss';
 
@@ -135,8 +144,8 @@ watch(
   flex-direction: column;
   min-width: 0;
   height: 100%;
-  background: var(--myui-code-bg, #0b1120);
-  color: var(--myui-code-text, #d6deeb);
+  background: var(--myui-code-bg, #ffffff);
+  color: var(--myui-code-text, #24292e);
 }
 
 // ===== 파일명 헤더 =====
@@ -145,7 +154,7 @@ watch(
   align-items: center;
   gap: 8px;
   padding: 14px 20px;
-  border-bottom: 1px solid var(--myui-code-border, rgba(255, 255, 255, 0.08));
+  border-bottom: 1px solid var(--myui-code-border, rgba(0, 0, 0, 0.12));
   font-size: 14px;
   flex-shrink: 0;
 }
@@ -153,13 +162,13 @@ watch(
 .myui-code-viewer__file-icon {
   font-size: 12px;
   font-weight: 700;
-  color: var(--myui-code-accent, #41b883);
+  color: var(--myui-code-accent, #35945f);
   font-family: var(--myui-code-font, ui-monospace, 'SF Mono', Menlo, Consolas, monospace);
 }
 
 .myui-code-viewer__filename {
   font-family: var(--myui-code-font, ui-monospace, 'SF Mono', Menlo, Consolas, monospace);
-  color: var(--myui-code-text, #d6deeb);
+  color: var(--myui-code-text, #24292e);
 }
 
 // ===== 코드 영역 =====
@@ -188,12 +197,23 @@ watch(
   }
 }
 
+// 다크 모드: Shiki 듀얼 테마 변수로 코드 색상 전환
+[data-theme='dark'] .myui-code-viewer__code {
+  pre.shiki,
+  pre.shiki span {
+    color: var(--shiki-dark) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
 .myui-code-viewer__plain {
   padding: 20px;
   overflow-x: auto;
 
   code {
-    color: var(--myui-code-text, #d6deeb);
+    color: var(--myui-code-text, #24292e);
   }
 }
 </style>

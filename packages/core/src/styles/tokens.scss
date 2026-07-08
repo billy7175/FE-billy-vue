@@ -45,6 +45,19 @@
   // 트랜지션
   --myui-transition-fast: 150ms ease;
   --myui-transition-normal: 250ms ease;
+
+  // 코드 쇼케이스 (CodeShowcase / FileTree / CodeViewer)
+  // 배경(--myui-bg)과 한 단계 어긋난 표면색으로 패널 경계가 묻히지 않게 함
+  --myui-code-bg: #fafbfc;
+  --myui-code-sidebar-bg: #f1f5f9;
+  --myui-code-text: #24292e;
+  --myui-code-muted: #6c757d;
+  --myui-code-border: rgba(0, 0, 0, 0.14);
+  --myui-code-hover: rgba(0, 0, 0, 0.05);
+  --myui-code-active: rgba(0, 0, 0, 0.08);
+  --myui-code-tab-active: rgba(0, 0, 0, 0.06);
+  --myui-code-accent: #35945f;
+  --myui-code-font: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
 // 다크 테마
@@ -65,5 +78,17 @@
   --myui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --myui-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   --myui-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+
+  // 코드 쇼케이스 (CodeShowcase / FileTree / CodeViewer)
+  // 다크 페이지 배경(#0b1220)보다 밝은 표면색으로 패널이 구분되게 함
+  --myui-code-bg: #111a2e;
+  --myui-code-sidebar-bg: #16213a;
+  --myui-code-text: #d6deeb;
+  --myui-code-muted: #8b95a7;
+  --myui-code-border: rgba(255, 255, 255, 0.1);
+  --myui-code-hover: rgba(255, 255, 255, 0.06);
+  --myui-code-active: rgba(255, 255, 255, 0.1);
+  --myui-code-tab-active: rgba(255, 255, 255, 0.08);
+  --myui-code-accent: #41b883;
 }
 

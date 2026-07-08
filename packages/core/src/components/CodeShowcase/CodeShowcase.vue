@@ -47,7 +47,8 @@
         :code="currentFile.code"
         :lang="currentFile.lang"
         :filename="currentFile.path"
-        :theme="theme"
+        :light-theme="lightTheme"
+        :dark-theme="darkTheme"
       />
     </div>
   </div>
@@ -66,7 +67,8 @@ import type { CodeShowcaseProps } from './types'
 const props = withDefaults(defineProps<CodeShowcaseProps>(), {
   examples: () => [],
   modelValue: '',
-  theme: 'github-dark',
+  lightTheme: 'github-light',
+  darkTheme: 'github-dark',
   height: '480px',
   ariaLabel: '코드 예제'
 })
@@ -112,8 +114,8 @@ function selectExample(value: string) {
 /**
  * CodeShowcase 스타일
  *
- * Nuxt 홈페이지처럼 항상 어두운 코드 패널을 기본으로 하고,
- * --myui-code-* CSS 변수로 커스터마이징 가능
+ * 테마 토큰(--myui-code-*)은 tokens.scss에서 라이트 기본값 +
+ * [data-theme="dark"] 오버라이드로 정의됨 (다른 컴포넌트와 동일한 방식)
  */
 @import '../../styles/tokens.scss';
 
@@ -139,7 +141,7 @@ function selectExample(value: string) {
   border: 1px solid transparent;
   border-radius: 10px;
   background: transparent;
-  color: var(--myui-code-muted, #8b95a7);
+  color: var(--myui-code-muted, #6c757d);
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
@@ -150,7 +152,7 @@ function selectExample(value: string) {
     background-color var(--myui-transition-fast, 150ms ease);
 
   &:hover:not(&--active) {
-    color: var(--myui-code-text, #d6deeb);
+    color: var(--myui-code-text, #24292e);
   }
 
   &:focus-visible {
@@ -159,9 +161,9 @@ function selectExample(value: string) {
   }
 
   &--active {
-    background: var(--myui-code-tab-active, rgba(255, 255, 255, 0.08));
-    border-color: var(--myui-code-border, rgba(255, 255, 255, 0.08));
-    color: var(--myui-code-text, #ffffff);
+    background: var(--myui-code-tab-active, rgba(0, 0, 0, 0.06));
+    border-color: var(--myui-code-border, rgba(0, 0, 0, 0.12));
+    color: var(--myui-code-text, #24292e);
     font-weight: 600;
   }
 }
@@ -174,16 +176,17 @@ function selectExample(value: string) {
 .myui-code-showcase__panel {
   display: flex;
   overflow: hidden;
-  border: 1px solid var(--myui-code-border, rgba(255, 255, 255, 0.08));
+  border: 1px solid var(--myui-code-border, rgba(0, 0, 0, 0.14));
   border-radius: 12px;
-  background: var(--myui-code-sidebar-bg, #0d1526);
+  background: var(--myui-code-sidebar-bg, #f1f5f9);
+  box-shadow: var(--myui-shadow, 0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .myui-code-showcase__sidebar {
   width: 240px;
   flex-shrink: 0;
   overflow-y: auto;
-  border-right: 1px solid var(--myui-code-border, rgba(255, 255, 255, 0.08));
+  border-right: 1px solid var(--myui-code-border, rgba(0, 0, 0, 0.12));
 }
 
 .myui-code-showcase__viewer {
@@ -200,7 +203,7 @@ function selectExample(value: string) {
     width: 100%;
     max-height: 160px;
     border-right: none;
-    border-bottom: 1px solid var(--myui-code-border, rgba(255, 255, 255, 0.08));
+    border-bottom: 1px solid var(--myui-code-border, rgba(0, 0, 0, 0.12));
   }
 }
 </style>

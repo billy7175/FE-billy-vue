@@ -103,7 +103,7 @@ function handleSelect(path: string) {
   padding: 8px;
   list-style: none;
   font-size: 14px;
-  color: var(--myui-code-text, #d6deeb);
+  color: var(--myui-code-text, #24292e);
 
   &__children {
     margin: 0;
@@ -128,7 +128,7 @@ function handleSelect(path: string) {
     transition: background-color var(--myui-transition-fast, 150ms ease);
 
     &:hover {
-      background: var(--myui-code-hover, rgba(255, 255, 255, 0.06));
+      background: var(--myui-code-hover, rgba(0, 0, 0, 0.05));
     }
 
     &:focus-visible {
@@ -137,7 +137,7 @@ function handleSelect(path: string) {
     }
 
     &--active {
-      background: var(--myui-code-active, rgba(255, 255, 255, 0.1));
+      background: var(--myui-code-active, rgba(0, 0, 0, 0.08));
     }
   }
 
@@ -150,11 +150,19 @@ function handleSelect(path: string) {
       font-weight: 700;
       font-family: var(--myui-code-font, ui-monospace, 'SF Mono', Menlo, Consolas, monospace);
 
-      // 파일 타입별 아이콘 색상
-      &[data-ext='vue'] { color: #41b883; }
-      &[data-ext='json'] { color: #cbcb41; }
-      &[data-ext='ts'], &[data-ext='tsx'] { color: #519aba; }
-      &[data-ext='js'], &[data-ext='jsx'] { color: #cbcb41; }
+      // 파일 타입별 아이콘 색상 (라이트 기본)
+      &[data-ext='vue'] { color: #35945f; }
+      &[data-ext='json'] { color: #9c8500; }
+      &[data-ext='ts'], &[data-ext='tsx'] { color: #3178c6; }
+      &[data-ext='js'], &[data-ext='jsx'] { color: #9c8500; }
+
+      // 다크 모드: 어두운 배경에서 더 밝은 색으로
+      [data-theme='dark'] & {
+        &[data-ext='vue'] { color: #41b883; }
+        &[data-ext='json'] { color: #cbcb41; }
+        &[data-ext='ts'], &[data-ext='tsx'] { color: #519aba; }
+        &[data-ext='js'], &[data-ext='jsx'] { color: #cbcb41; }
+      }
     }
   }
 
@@ -169,7 +177,7 @@ function handleSelect(path: string) {
   &__chevron {
     flex-shrink: 0;
     font-size: 12px;
-    color: var(--myui-code-muted, #8b95a7);
+    color: var(--myui-code-muted, #6c757d);
     transition: transform var(--myui-transition-fast, 150ms ease);
     transform: rotate(180deg);
 

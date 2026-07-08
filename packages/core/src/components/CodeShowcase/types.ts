@@ -34,8 +34,10 @@ export interface CodeShowcaseProps {
   examples: ShowcaseExample[]
   /** 현재 활성화된 예제 value (v-model) */
   modelValue?: string
-  /** Shiki 테마 이름 */
-  theme?: string
+  /** 라이트 모드에서 사용할 Shiki 테마 */
+  lightTheme?: string
+  /** 다크 모드([data-theme="dark"])에서 사용할 Shiki 테마 */
+  darkTheme?: string
   /** 콘텐츠 영역 높이 (CSS 값) */
   height?: string
   /** ARIA 레이블 (접근성) */
@@ -68,6 +70,8 @@ export interface CodeViewerProps {
   lang?: string
   /** 헤더에 표시할 파일 경로/이름 (생략 시 헤더 미표시) */
   filename?: string
-  /** Shiki 테마 이름 */
-  theme?: string
+  /** 라이트 모드에서 사용할 Shiki 테마 */
+  lightTheme?: string
+  /** 다크 모드([data-theme="dark"])에서 사용할 Shiki 테마 */
+  darkTheme?: string
 }
