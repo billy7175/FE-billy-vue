@@ -267,6 +267,28 @@
         </div>
       </section>
 
+      <!-- CodeShowcase 컴포넌트 테스트 섹션 -->
+      <section v-if="selectedComponent === 'code-showcase'" class="section">
+        <h2>CodeShowcase 컴포넌트</h2>
+
+        <div class="demo-group">
+          <h3>기본 CodeShowcase</h3>
+          <div style="padding: 24px; background: #020617; border-radius: 12px;">
+            <UiCodeShowcase v-model="activeShowcase" :examples="showcaseExamples" />
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>옵션</h3>
+          <p style="color: var(--myui-text-muted, #6c757d); font-size: 14px;">
+            • examples: 예제 목록 (탭 라벨/아이콘 + 파일 경로/코드)<br/>
+            • theme: Shiki 하이라이팅 테마 (기본 github-dark)<br/>
+            • height: 콘텐츠 영역 높이<br/>
+            • FileTree / CodeViewer는 독립 컴포넌트로도 사용 가능
+          </p>
+        </div>
+      </section>
+
       <!-- 추가 컴포넌트들은 여기에 섹션 추가 -->
       </main>
     </div>
@@ -303,6 +325,70 @@ const isModal2Open = ref(false)
 const isModal3Open = ref(false)
 const isModal4Open = ref(false)
 
+// CodeShowcase 값
+const activeShowcase = ref('minimal')
+const showcaseExamples = [
+  {
+    value: 'minimal',
+    label: 'Minimal',
+    icon: '🌱',
+    files: [
+      {
+        path: 'app/app.vue',
+        code: `<script setup lang="ts">
+const version = 4
+<\/script>
+
+<template>
+  <h1>
+    Hello Nuxt {{ version }}!
+  </h1>
+</template>
+
+<style scoped>
+h1 {
+  font-size: 3rem;
+}
+</style>
+`
+      },
+      {
+        path: 'package.json',
+        code: `{
+  "name": "nuxt-app",
+  "dependencies": {
+    "nuxt": "^4.0.0"
+  }
+}
+`
+      }
+    ]
+  },
+  {
+    value: 'routing',
+    label: 'Routing',
+    icon: '🧭',
+    files: [
+      {
+        path: 'app/pages/index.vue',
+        code: `<template>
+  <NuxtLink to="/about">
+    About 페이지로 이동
+  </NuxtLink>
+</template>
+`
+      },
+      {
+        path: 'app/pages/about.vue',
+        code: `<template>
+  <h1>About</h1>
+</template>
+`
+      }
+    ]
+  }
+]
+
 // 선택된 컴포넌트
 const selectedComponent = ref('button')
 
@@ -311,7 +397,8 @@ const components = [
   { id: 'button', name: 'Button' },
   { id: 'input', name: 'Input' },
   { id: 'tab', name: 'Tab' },
-  { id: 'modal', name: 'Modal' }
+  { id: 'modal', name: 'Modal' },
+  { id: 'code-showcase', name: 'CodeShowcase' }
 ]
 
 /**
