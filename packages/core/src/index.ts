@@ -23,6 +23,16 @@ export type { TabProps, TabItem } from './components/Tab/types'
 export { Modal } from './components/Modal'
 export type { ModalProps } from './components/Modal/types'
 
+export { CodeShowcase, FileTree, CodeViewer } from './components/CodeShowcase'
+export type {
+  CodeShowcaseProps,
+  ShowcaseExample,
+  ShowcaseFile,
+  FileTreeProps,
+  FileTreeNodeData,
+  CodeViewerProps
+} from './components/CodeShowcase/types'
+
 // ===== 전역 등록 플러그인 =====
 export { default as MyUIPlugin } from './plugin'
 

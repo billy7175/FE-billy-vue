@@ -40,7 +40,7 @@ export default defineConfig({
     
     // 외부 의존성 (번들에 포함하지 않음)
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', /^shiki/],
       output: {
         // Vue를 전역 변수로 사용할 때의 이름
         globals: {
