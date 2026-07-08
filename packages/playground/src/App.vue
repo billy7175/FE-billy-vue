@@ -204,6 +204,69 @@
         </div>
       </section>
 
+      <!-- Modal 컴포넌트 테스트 섹션 -->
+      <section v-if="selectedComponent === 'modal'" class="section">
+        <h2>Modal 컴포넌트</h2>
+        
+        <div class="demo-group">
+          <h3>기본 Modal</h3>
+          <div class="demo-row">
+            <UiButton @click="isModalOpen = true">모달 열기</UiButton>
+            <UiModal v-model="isModalOpen" title="기본 모달">
+              <p>이것은 기본 모달입니다.</p>
+              <p>닫기 버튼을 클릭하거나 Overlay를 클릭하면 닫힙니다.</p>
+            </UiModal>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>Sizes (크기)</h3>
+          <div class="demo-row" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+            <UiButton @click="isModal2Open = true">Small 모달</UiButton>
+            <UiModal v-model="isModal2Open" title="Small 모달" size="sm">
+              <p>Small 크기의 모달입니다.</p>
+            </UiModal>
+
+            <UiButton @click="isModal3Open = true">Large 모달</UiButton>
+            <UiModal v-model="isModal3Open" title="Large 모달" size="lg">
+              <p>Large 크기의 모달입니다.</p>
+              <p>더 넓은 공간을 제공합니다.</p>
+            </UiModal>
+
+            <UiButton @click="isModal4Open = true">Fullscreen 모달</UiButton>
+            <UiModal v-model="isModal4Open" title="Fullscreen 모달" size="fullscreen">
+              <p>전체 화면 모달입니다.</p>
+            </UiModal>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>Footer 슬롯</h3>
+          <div class="demo-row">
+            <UiButton @click="isModalOpen = true">Footer 있는 모달</UiButton>
+            <UiModal v-model="isModalOpen" title="Footer 모달">
+              <p>Footer 슬롯을 사용한 모달입니다.</p>
+              <template #footer>
+                <UiButton variant="secondary" @click="isModalOpen = false">취소</UiButton>
+                <UiButton variant="primary" @click="isModalOpen = false">확인</UiButton>
+              </template>
+            </UiModal>
+          </div>
+        </div>
+
+        <div class="demo-group">
+          <h3>옵션</h3>
+          <div class="demo-row" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+            <p style="color: var(--myui-text-muted, #6c757d); font-size: 14px;">
+              • closeable: 닫기 버튼 표시 여부<br/>
+              • closeOnClickOutside: Overlay 클릭 시 닫기 여부<br/>
+              • closeOnEsc: ESC 키로 닫기 여부<br/>
+              • lockScroll: 모달 열릴 때 body 스크롤 방지 여부
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- 추가 컴포넌트들은 여기에 섹션 추가 -->
       </main>
     </div>
@@ -234,6 +297,12 @@ const tabTabs = [
   { value: 'tab3', label: '탭 3' }
 ]
 
+// Modal 값
+const isModalOpen = ref(false)
+const isModal2Open = ref(false)
+const isModal3Open = ref(false)
+const isModal4Open = ref(false)
+
 // 선택된 컴포넌트
 const selectedComponent = ref('button')
 
@@ -241,7 +310,8 @@ const selectedComponent = ref('button')
 const components = [
   { id: 'button', name: 'Button' },
   { id: 'input', name: 'Input' },
-  { id: 'tab', name: 'Tab' }
+  { id: 'tab', name: 'Tab' },
+  { id: 'modal', name: 'Modal' }
 ]
 
 /**
