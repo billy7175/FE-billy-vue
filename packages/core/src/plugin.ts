@@ -24,6 +24,7 @@ import type { App, Plugin } from 'vue'
 import { Button } from './components/Button'
 import { Input } from './components/Input'
 import { Tab } from './components/Tab'
+import { Modal } from './components/Modal'
 
 // 컴포넌트 레지스트리
 // - 이름: 전역 등록될 컴포넌트 이름
@@ -31,7 +32,8 @@ import { Tab } from './components/Tab'
 const components: Record<string, any> = {
   Button,
   Input,
-  Tab
+  Tab,
+  Modal
 }
 
 /**

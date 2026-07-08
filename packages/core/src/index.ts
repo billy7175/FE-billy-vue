@@ -20,6 +20,9 @@ export type { InputProps } from './components/Input/types'
 export { Tab } from './components/Tab'
 export type { TabProps, TabItem } from './components/Tab/types'
 
+export { Modal } from './components/Modal'
+export type { ModalProps } from './components/Modal/types'
+
 // ===== 전역 등록 플러그인 =====
 export { default as MyUIPlugin } from './plugin'
 
