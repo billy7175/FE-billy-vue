@@ -271,18 +271,17 @@
       <section v-if="selectedComponent === 'code-showcase'" class="section">
         <h2>CodeShowcase 컴포넌트</h2>
 
+        <!-- 액자 느낌을 원하면 demo-group--framed 클래스를 추가 (스타일은 하단 주석 참고) -->
         <div class="demo-group">
           <h3>기본 CodeShowcase</h3>
-          <div style="padding: 24px; background: #020617; border-radius: 12px;">
-            <UiCodeShowcase v-model="activeShowcase" :examples="showcaseExamples" />
-          </div>
+          <UiCodeShowcase v-model="activeShowcase" :examples="showcaseExamples" />
         </div>
 
         <div class="demo-group">
           <h3>옵션</h3>
           <p style="color: var(--myui-text-muted, #6c757d); font-size: 14px;">
             • examples: 예제 목록 (탭 라벨/아이콘 + 파일 경로/코드)<br/>
-            • theme: Shiki 하이라이팅 테마 (기본 github-dark)<br/>
+            • lightTheme / darkTheme: Shiki 하이라이팅 테마 (사이트 테마를 따라 자동 전환)<br/>
             • height: 콘텐츠 영역 높이<br/>
             • FileTree / CodeViewer는 독립 컴포넌트로도 사용 가능
           </p>
@@ -550,6 +549,15 @@ onMounted(() => {
 .demo-group {
   margin-bottom: 32px;
 }
+
+/* 데모에 액자 느낌이 필요할 때 demo-group에 함께 붙여 쓰는 modifier
+   (예: <div class="demo-group demo-group--framed">)
+.demo-group--framed {
+  padding: 24px;
+  background: #020617;
+  border-radius: 12px;
+}
+*/
 
 .demo-group h3 {
   font-size: 1rem;
