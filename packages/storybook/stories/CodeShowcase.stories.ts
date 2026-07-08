@@ -118,7 +118,6 @@ const meta: Meta<typeof CodeShowcase> = {
 
   args: {
     examples: sampleExamples,
-    theme: 'github-dark',
     height: '480px'
   },
 
@@ -127,10 +126,15 @@ const meta: Meta<typeof CodeShowcase> = {
       description: '예제 목록 (탭 + 파일 + 코드)',
       control: { type: 'object' }
     },
-    theme: {
-      description: 'Shiki 신택스 하이라이팅 테마',
+    lightTheme: {
+      description: '라이트 모드 Shiki 테마',
       control: { type: 'select' },
-      options: ['github-dark', 'github-light', 'nord', 'one-dark-pro', 'vitesse-dark']
+      options: ['github-light', 'vitesse-light', 'one-light']
+    },
+    darkTheme: {
+      description: '다크 모드([data-theme="dark"]) Shiki 테마',
+      control: { type: 'select' },
+      options: ['github-dark', 'nord', 'one-dark-pro', 'vitesse-dark']
     },
     height: {
       description: '콘텐츠 영역 높이',
@@ -151,7 +155,7 @@ export const Default: Story = {
       return { args, activeExample }
     },
     template: `
-      <div style="padding: 24px; background: #020617; border-radius: 12px;">
+      <div style="padding: 24px;">
         <CodeShowcase v-model="activeExample" v-bind="args" />
       </div>
     `
@@ -170,7 +174,7 @@ export const ViewerOnly: Story = {
       return { code }
     },
     template: `
-      <div style="height: 240px; border-radius: 12px; overflow: hidden;">
+      <div style="height: 240px; border: 1px solid var(--myui-code-border); border-radius: 12px; overflow: hidden;">
         <CodeViewer :code="code" filename="src/utils/math.ts" />
       </div>
     `
@@ -192,9 +196,9 @@ export const TreeOnly: Story = {
       return { selected, files }
     },
     template: `
-      <div style="width: 280px; background: #0d1526; border-radius: 12px; padding: 8px;">
+      <div style="width: 280px; background: var(--myui-code-sidebar-bg); border: 1px solid var(--myui-code-border); border-radius: 12px; padding: 8px;">
         <FileTree v-model="selected" :files="files" />
-        <p style="color: #8b95a7; font-size: 13px; padding: 8px 12px;">선택됨: {{ selected }}</p>
+        <p style="color: var(--myui-code-muted); font-size: 13px; padding: 8px 12px;">선택됨: {{ selected }}</p>
       </div>
     `
   })
